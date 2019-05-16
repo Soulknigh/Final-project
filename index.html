@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	    
+	<title></title>
+	<meta charset="utf8">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="script.js"></script>
+	<style>
+		#legend {position: absolute;top: 0;right: 0;width: 800px;} .legend-color {width: 30px;height: 30px;} td {border: 1px solid black; font-size: 14px; padding-left: 5px;}
+	</style>
+</head>
+<body>
+		<table id="legend">
+			<tr>
+				<td class="legend-color">Цвет</td>
+				<td>Название</td>
+				<td>Движение</td>
+				<td>Питается</td>
+				<td>Размножается</td>
+				<td>Умирает</td>
+			</tr>
+	
+			<tr>
+				<td class="legend-color" style="background-color:gray"></td>
+				<td>Пустые клетки</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="legend-color" style="background-color:green"></td>
+				<td>Трава</td>
+				<td></td>
+				<td></td>
+				<td>В окружающих 8 клетках, через каждые 3 такта</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="legend-color" style="background-color:yellow"></td>
+				<td>Траваядное</td>
+				<td>В окружающих 8 клетках, енергия уменьшается на 2</td>
+				<td>Травой, находящейся в окружающих 8 клетках, питаясь одной траваой энергия увеличивается на 2</td>
+				<td>Размножается в одной из свободных его окружающих 8 клетках, когда энергия становится 8</td>
+				<td>Умирает когда энергия становится 0</td>
+			</tr>
+			<tr>
+				<td class="legend-color" style="background-color:blue"></td>
+				<td>Хищник</td>
+				<td>В окружающих 8 клетках, енергия уменьшается на 2</td>
+				<td>Травоядным, находящимся в окружающих 8 клетках, питаясь одним травоядным энергия увеличивается на 2</td>
+				<td>Размножается в одной из свободных  его окружающих 8 клетках, когда энергия становится 9</td>
+				<td>Умирает когда энергия становится 0</td>
+			</tr>
+			<tr>
+				<td class="legend-color" style="background-color:red"></td>
+				<td>Т-Рекс</td>
+				<td>В окружающих 12 клетках по диагонали, тоесть он видит по диагонали 3 клетки в каждую сторону , енергия уменьшается на 2</td>
+				<td>Хищником, находящихся в окружающих 12 клетках по диагонали, питаясь одним хищником, энергия увеличивается на 2</td>
+				<td>Размножается в одной из свободных его окружающих 8 клетках, когда энергия становится 10</td>
+				<td>Умирает когда энергия становится 0</td>
+			</tr>
+			<tr>
+				<td class="legend-color" style="background-color:orange"></td>
+				<td>Трицератопс</td>
+				<td>В окружающих 48 клетках, енергия уменьшается на 2</td>
+				<td>Трицератопс сражается с Т-Рексом для выживания и поэтому он просто дерется, но не ест Т-Рекса и поэтому не размножается , находящихся в окружающих 48 клетках по диагонали,убивая Т-Рекса он не получает энергия</td>
+				<td>Он не размножается</td>
+				<td>Умирает когда энергия становится 0</td>
+			</tr>
+		</table>
+</body>
+</html>
